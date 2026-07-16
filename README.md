@@ -1,6 +1,23 @@
 # Our One-Year Anniversary ❤️
 
-A romantic, mobile-first anniversary website built with Next.js, Tailwind CSS, and the vinext deployment runtime. It includes an editable love letter, relationship timeline, Polaroid gallery with a lightbox, lazy-loaded video memories, animated reasons cards, and a final surprise reveal.
+A romantic, mobile-first anniversary website built with Next.js and Tailwind CSS. It includes a secure PIN gate, editable love letter, relationship timeline, Polaroid gallery with a lightbox, lazy-loaded video memories, animated reasons cards, and a final surprise reveal.
+
+## Set the private PIN
+
+The PIN is checked on the server and is never included in the browser code or committed to GitHub.
+
+For local development, copy `.env.example` to `.env.local`, then replace both placeholder values:
+
+```bash
+cp .env.example .env.local
+```
+
+```text
+ANNIVERSARY_PIN=your-numeric-pin
+ANNIVERSARY_SECRET=a-long-random-secret
+```
+
+For Vercel, add both values under **Project Settings → Environment Variables** for Production, Preview, and Development. Redeploy after changing either value. Changing `ANNIVERSARY_SECRET` signs out browsers that previously entered the PIN.
 
 ## The one file to edit
 
@@ -91,20 +108,33 @@ pnpm test
 
 `pnpm build` creates the production site. `pnpm test` rebuilds and checks that the key anniversary sections render correctly.
 
+## Deploy to Vercel
+
+1. In Vercel, choose **Add New → Project** and import this GitHub repository.
+2. Leave the detected framework as **Next.js** and keep the default build settings.
+3. Add `ANNIVERSARY_PIN` and `ANNIVERSARY_SECRET` as environment variables before deploying.
+4. Deploy, then visit the generated Vercel URL and enter the PIN.
+
+The Vercel URL is publicly reachable, but the anniversary content is server-gated behind the PIN. The repository does not contain the PIN.
+
 ## Project map
 
 ```text
 app/
+  api/unlock/route.ts  secure PIN verification and access cookie
   globals.css        colours, typography, layout, and animations
   layout.tsx         page metadata and social sharing
   page.tsx           page entry
 components/
   AnniversarySite.tsx  sections and interactions
+  PinGate.tsx          PIN entry screen
 data/
   relationship.ts    all personal content and media paths
 public/
   images/             photos, posters, favicon, and social image
   videos/             local MP4 memories
+lib/
+  access.ts           server-side PIN and cookie helpers
 ```
 
 ## Accessibility and motion

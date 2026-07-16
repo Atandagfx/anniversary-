@@ -27,6 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
       description: "365 days of love, laughter and beautiful memories.",
       images: ["/og.png"],
     },
+    robots: {
+      index: false,
+      follow: false,
+      noarchive: true,
+    },
   };
 }
 
