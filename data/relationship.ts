@@ -30,100 +30,121 @@ export type VideoMemory = {
 
 export const anniversaryContent = {
   couple: {
-    initials: "A + J", // CHANGE: your initials
-    dateRange: "OUR FIRST YEAR · 2025—2026", // CHANGE: your anniversary years
+    yourName: "Atanda", // CHANGE: your name
+    partnerName: "Ajoke", // CHANGE: your partner's name
+    initials: "A + A", // CHANGE: your initials
+    anniversaryDate: "05 AUGUST 2026", // CHANGE: your anniversary date
+    dateRange: "OUR FIRST YEAR · 05 AUG 2025—05 AUG 2026", // CHANGE: your anniversary years
   },
   hero: {
-    title: "Happy One-Year Anniversary, My Love ❤️",
-    subtitle: "365 days of love, laughter and beautiful memories.",
+    title: "Happy One-Year Anniversary, Ajoke ❤️",
+    subtitle: "365 days of choosing you, laughing with you, and building our beautiful story.",
     featuredImage: "/images/hero-memory.webp", // CHANGE: featured photo
-    featuredImageAlt: "A warm placeholder for your favourite photo together",
-    note: "my favourite place is beside you",
+    featuredImageAlt: "A collage of Atanda and Ajoke's memories together",
+    note: "my favourite story is ours",
   },
   letter: {
     eyebrow: "From my heart",
     title: "A letter for you",
-    greeting: "My love,",
+    greeting: "My dearest Ajoke,",
     // CHANGE: replace this placeholder letter with your own words.
     paragraphs: [
-      "This past year with you has made ordinary days feel rare and beautiful. Thank you for every quiet laugh, every unexpected adventure, and every kindness that became part of our story.",
-      "I love the way you make the world feel softer, the way your smile changes a room, and the way even the smallest moments become memories when I am with you.",
-      "This is only the beginning. I cannot wait for all the places we will go, the dreams we will build, and the versions of us we have yet to meet.",
+      "One year ago, we began a story I never want to stop reading. You have filled my days with laughter, warmth, and the kind of love that makes even ordinary moments feel unforgettable.",
+      "Thank you for being my peace, my favourite person, and the smile I look for in every room. Every photograph here holds a moment, but what I treasure most is how it felt to live each one beside you.",
+      "Ajoke, this first year is only our opening chapter. I cannot wait for all the adventures, quiet mornings, dreams, and anniversaries still waiting for Atanda and Ajoke.",
     ],
-    signOff: "Forever yours, always.", // CHANGE: your sign-off
+    signOff: "Forever yours, Atanda.", // CHANGE: your sign-off
   },
   timeline: [
     {
-      date: "16 JULY 2025", // CHANGE: real date
-      title: "The day we met",
-      text: "The little moment that quietly changed everything. Replace this with where you met and what you first noticed about her.",
+      date: "05 AUGUST 2025", // CHANGE: real date
+      title: "The day our story began",
+      text: "The beginning of us—the moment life quietly started arranging itself into something more beautiful.",
       image: "/images/timeline-met.webp",
-      imageAlt: "Placeholder for a photo from the day we met",
+      imageAlt: "Ajoke smiling in a favourite early photograph",
     },
     {
-      date: "02 AUGUST 2025",
+      date: "OUR FIRST DATE",
       title: "Our first date",
-      text: "The conversation that lasted too long, the smile I kept replaying, and the beginning of something wonderful.",
+      text: "The conversation, the little glances, and the feeling that I had just found someone truly special.",
       image: "/images/timeline-date.webp",
-      imageAlt: "Placeholder for a photo from our first date",
+      imageAlt: "Ajoke smiling during a date together",
     },
     {
-      date: "18 OCTOBER 2025",
+      date: "OUR FIRST TRIP",
       title: "Our first trip",
-      text: "New roads, shared playlists, and the feeling that anywhere could feel like home with you beside me.",
+      text: "A new place, a shared adventure, and the discovery that anywhere feels like home when you are beside me.",
       image: "/images/timeline-trip.webp",
-      imageAlt: "Placeholder for a photo from our first trip",
+      imageAlt: "Atanda and Ajoke capturing a memory together on their first trip",
     },
     {
-      date: "14 FEBRUARY 2026",
+      date: "A FAVOURITE DAY",
       title: "A favourite memory",
-      text: "Add the private joke, the ordinary afternoon, or the magical night you both still talk about.",
+      text: "One of those moments that still makes me smile—the kind of memory I would happily live all over again.",
       image: "/images/timeline-favourite.webp",
-      imageAlt: "Placeholder for a favourite memory together",
+      imageAlt: "A favourite playful memory shared by Atanda and Ajoke",
     },
     {
-      date: "16 JULY 2026",
+      date: "05 AUGUST 2026",
       title: "One year of us",
-      text: "Twelve months, countless memories, and a love that feels more like home with every passing day.",
+      text: "Twelve months, countless memories, and a love that feels more like home with every passing day. Happy anniversary, Ajoke.",
       image: "/images/timeline-anniversary.webp",
-      imageAlt: "Placeholder for our one-year anniversary photo",
+      imageAlt: "Atanda and Ajoke together in an anniversary memory",
     },
   ] satisfies TimelineEvent[],
   gallery: [
-    { src: "/images/gallery-01.webp", alt: "Placeholder for a candid couple photo", caption: "the laugh I never want to forget" },
-    { src: "/images/gallery-02.webp", alt: "Placeholder for a sunset memory", caption: "golden hour, with you" },
-    { src: "/images/gallery-03.webp", alt: "Placeholder for a cosy memory", caption: "our softest kind of happy" },
-    { src: "/images/gallery-04.webp", alt: "Placeholder for a travel photo", caption: "a little farther, together" },
-    { src: "/images/gallery-05.webp", alt: "Placeholder for a date-night photo", caption: "still choosing you" },
-    { src: "/images/gallery-06.webp", alt: "Placeholder for an anniversary photo", caption: "only the beginning" },
+    { src: "/images/gallery-01.webp", alt: "A phone capturing a cherished photo of Atanda and Ajoke", caption: "our memories inside our memories" },
+    { src: "/images/gallery-02.webp", alt: "Atanda and Ajoke smiling together", caption: "the smile I always choose" },
+    { src: "/images/gallery-03.webp", alt: "A playful behind-the-scenes moment on a screen", caption: "our wonderfully unserious moments" },
+    { src: "/images/gallery-04.webp", alt: "Atanda and Ajoke relaxing together", caption: "our softest kind of happy" },
+    { src: "/images/gallery-05.webp", alt: "A candid moment shared by Atanda and Ajoke", caption: "the beauty in our ordinary days" },
+    { src: "/images/gallery-06.webp", alt: "Atanda and Ajoke taking a mirror photograph", caption: "still choosing you, every day" },
   ] satisfies GalleryPhoto[],
   videos: [
     {
-      src: "/videos/memory-01.mp4", // CHANGE: your first MP4
+      src: "/videos/memory-01.mp4", // CHANGE: first part of your first memory
       poster: "/images/video-poster-01.webp",
-      caption: "The way this day felt",
-      description: "Replace this with a favourite short video memory.",
+      caption: "A moment worth keeping · Part I",
+      description: "The beginning of a favourite memory from our first year.",
+    },
+    {
+      src: "/videos/memory-01-part-2.mp4",
+      poster: "/images/video-poster-01.webp",
+      caption: "A moment worth keeping · Part II",
+      description: "The memory continues—because every second of it belongs here.",
+    },
+    {
+      src: "/videos/memory-01-part-3.mp4",
+      poster: "/images/video-poster-01.webp",
+      caption: "A moment worth keeping · Part III",
+      description: "Another little piece of us, saved exactly as it happened.",
+    },
+    {
+      src: "/videos/memory-01-part-4.mp4",
+      poster: "/images/video-poster-01.webp",
+      caption: "A moment worth keeping · Part IV",
+      description: "The final part of a memory I never want to forget.",
     },
     {
       src: "/videos/memory-02.mp4", // CHANGE: your second MP4
       poster: "/images/video-poster-02.webp",
-      caption: "A moment worth replaying",
-      description: "Replace this with another favourite short video memory.",
+      caption: "Us, in motion",
+      description: "Because some memories deserve to be felt all over again.",
     },
   ] satisfies VideoMemory[],
   reasons: [
-    "You make ordinary days feel special.",
-    "Your laugh is still my favourite sound.",
+    "Ajoke, you make ordinary days feel special.",
+    "Your smile can change the whole direction of my day.",
     "You see the best in me, even when I forget to.",
-    "You are both my calm and my greatest adventure.",
+    "You are both my calm and my favourite adventure.",
     "Every version of the future is brighter with you in it.",
     "With you, love feels like home.",
   ],
   finalSurprise: {
     title: "If I could choose again…",
-    message: "I would find you sooner, love you longer, and choose you in every lifetime. Happy one year, my love. Here is to forever beginning with us. ❤️", // CHANGE: final message
+    message: "I would find you sooner, love you longer, and choose you in every lifetime. Happy one-year anniversary, Ajoke. From your Atanda—with all my heart, today and always. ❤️", // CHANGE: final message
     media: "/images/final-memory.webp", // CHANGE: final photo or video poster
-    mediaAlt: "Placeholder for one final favourite photo together",
+    mediaAlt: "Atanda and Ajoke standing together outdoors",
   },
 } as const;
 

@@ -9,22 +9,22 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     metadataBase: new URL(`${protocol}://${host}`),
-    title: "Happy One-Year Anniversary, My Love ❤️",
-    description: "365 days of love, laughter and beautiful memories.",
+    title: "Happy One-Year Anniversary, Ajoke ❤️",
+    description: "Atanda and Ajoke — 365 days of love, laughter and beautiful memories.",
     icons: {
       icon: "/images/heart-icon.png",
       shortcut: "/images/heart-icon.png",
     },
     openGraph: {
-      title: "Happy One-Year Anniversary, My Love ❤️",
-      description: "365 days of love, laughter and beautiful memories.",
+      title: "Happy One-Year Anniversary, Ajoke ❤️",
+      description: "Atanda and Ajoke — 365 days of love, laughter and beautiful memories.",
       images: [{ url: "/og.png", width: 1200, height: 630 }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "Happy One-Year Anniversary, My Love ❤️",
-      description: "365 days of love, laughter and beautiful memories.",
+      title: "Happy One-Year Anniversary, Ajoke ❤️",
+      description: "Atanda and Ajoke — 365 days of love, laughter and beautiful memories.",
       images: ["/og.png"],
     },
     robots: {

@@ -47,10 +47,10 @@ export function PinGate() {
       </div>
 
       <section className="pin-card" aria-labelledby="pin-title">
-        <div className="pin-seal" aria-hidden="true">A</div>
-        <p className="eyebrow">A little secret, just for us</p>
+        <div className="pin-seal" aria-hidden="true">A+A</div>
+        <p className="eyebrow">Atanda &amp; Ajoke · a little secret</p>
         <h1 id="pin-title">Our story is waiting.</h1>
-        <p className="pin-intro">Enter our private PIN to open one year of love, laughter and beautiful memories.</p>
+        <p className="pin-intro">Enter our private PIN to open one year of love, laughter and beautiful memories—one page at a time.</p>
 
         <form className="pin-form" onSubmit={handleSubmit}>
           <label htmlFor="anniversary-pin">Anniversary PIN</label>

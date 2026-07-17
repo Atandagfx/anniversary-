@@ -2,6 +2,20 @@
 
 A romantic, mobile-first anniversary website built with Next.js and Tailwind CSS. It includes a secure PIN gate, editable love letter, relationship timeline, Polaroid gallery with a lightbox, lazy-loaded video memories, animated reasons cards, and a final surprise reveal.
 
+## Page-by-page navigation
+
+The story is presented as seven interactive chapters instead of one long scrolling page:
+
+1. Welcome
+2. Love letter
+3. Relationship timeline
+4. Photo gallery
+5. Video memories
+6. Reasons I love you
+7. Final surprise
+
+Visitors can move between chapters with the persistent **Back** and **Next** buttons, the progress markers at the top, the left/right keyboard arrows, or a horizontal swipe on a phone. The timeline, gallery, and reasons chapters have their own controls for moving through individual memories.
+
 ## Set the private PIN
 
 The PIN is checked on the server and is never included in the browser code or committed to GitHub.

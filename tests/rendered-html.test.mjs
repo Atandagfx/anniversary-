@@ -74,12 +74,15 @@ test("the PIN gate protects and unlocks the anniversary story", async () => {
   const unlockedResponse = await fetch(baseUrl, { headers: { cookie } });
   const unlockedHtml = await unlockedResponse.text();
   assert.equal(unlockedResponse.status, 200);
-  assert.match(unlockedHtml, /Happy One-Year Anniversary, My Love/);
+  assert.match(unlockedHtml, /Happy One-Year Anniversary, Ajoke/);
   assert.match(unlockedHtml, /Relive Our Story/);
-  assert.match(unlockedHtml, /A letter for you/);
-  assert.match(unlockedHtml, /Reasons I love you/);
-  assert.match(unlockedHtml, /One Last Thing/);
-  assert.match(unlockedHtml, /Made with love, just for you/);
+  assert.match(unlockedHtml, /Open Love letter/);
+  assert.match(unlockedHtml, /Open Our story/);
+  assert.match(unlockedHtml, /Open Our photos/);
+  assert.match(unlockedHtml, /Open Our videos/);
+  assert.match(unlockedHtml, /Open Why I love you/);
+  assert.match(unlockedHtml, /Open One last thing/);
+  assert.match(unlockedHtml, /Page navigation/);
   assert.doesNotMatch(unlockedHtml, /codex-preview|react-loading-skeleton/);
 });
 
