@@ -1,6 +1,6 @@
 # Our One-Year Anniversary ❤️
 
-A romantic, mobile-first anniversary website built with Next.js and Tailwind CSS. It includes a secure PIN gate, editable love letter, relationship timeline, Polaroid gallery with a lightbox, lazy-loaded video memories, animated reasons cards, and a final surprise reveal.
+A romantic, mobile-first anniversary website built with Next.js and Tailwind CSS. It includes a server-checked PIN gate, editable love letter, relationship timeline, Polaroid gallery with a lightbox, four lazy-loaded video memories, animated reasons cards, a personalised illustrated page transition, and a final surprise reveal.
 
 ## Page-by-page navigation
 
@@ -16,11 +16,13 @@ The story is presented as seven interactive chapters instead of one long scrolli
 
 Visitors can move between chapters with the persistent **Back** and **Next** buttons, the progress markers at the top, the left/right keyboard arrows, or a horizontal swipe on a phone. The timeline, gallery, and reasons chapters have their own controls for moving through individual memories.
 
+Every forward page change shows a short custom animation of Atanda and Ajoke. The illustration is stored at `public/images/muslim-couple-kiss.webp` and is based on the supplied couple photograph.
+
 ## Set the private PIN
 
-The PIN is checked on the server and is never included in the browser code or committed to GitHub.
+The PIN is checked on the server and is never included in the browser code or committed to GitHub. A successful unlock lasts only in the current page view: refreshing, reopening, or opening the link in another tab always returns to the PIN screen.
 
-For local development, copy `.env.example` to `.env.local`, then replace both placeholder values:
+For local development, copy `.env.example` to `.env.local`, then replace the placeholder value:
 
 ```bash
 cp .env.example .env.local
@@ -28,10 +30,9 @@ cp .env.example .env.local
 
 ```text
 ANNIVERSARY_PIN=your-numeric-pin
-ANNIVERSARY_SECRET=a-long-random-secret
 ```
 
-For Vercel, add both values under **Project Settings → Environment Variables** for Production, Preview, and Development. Redeploy after changing either value. Changing `ANNIVERSARY_SECRET` signs out browsers that previously entered the PIN.
+For Vercel, add `ANNIVERSARY_PIN` under **Project Settings → Environment Variables** for Production, Preview, and Development, then redeploy.
 
 ## The one file to edit
 
@@ -93,6 +94,13 @@ Always update the matching `alt` or `imageAlt` description so the site remains a
 
 Videos do not autoplay. The full MP4 is only inserted after the visitor taps a video card, reducing initial data use on mobile.
 
+The current site uses four independent MP4 files:
+
+- `public/videos/memory-01.mp4`
+- `public/videos/memory-02.mp4`
+- `public/videos/memory-03.mp4`
+- `public/videos/memory-04.mp4`
+
 ## Image optimisation tips
 
 - Export photos as WebP at roughly 75–85% quality.
@@ -126,7 +134,7 @@ pnpm test
 
 1. In Vercel, choose **Add New → Project** and import this GitHub repository.
 2. Leave the detected framework as **Next.js** and keep the default build settings.
-3. Add `ANNIVERSARY_PIN` and `ANNIVERSARY_SECRET` as environment variables before deploying.
+3. Add `ANNIVERSARY_PIN` as an environment variable before deploying.
 4. Deploy, then visit the generated Vercel URL and enter the PIN.
 
 The Vercel URL is publicly reachable, but the anniversary content is server-gated behind the PIN. The repository does not contain the PIN.
@@ -135,7 +143,7 @@ The Vercel URL is publicly reachable, but the anniversary content is server-gate
 
 ```text
 app/
-  api/unlock/route.ts  secure PIN verification and access cookie
+  api/unlock/route.ts  server-side PIN verification
   globals.css        colours, typography, layout, and animations
   layout.tsx         page metadata and social sharing
   page.tsx           page entry
@@ -148,7 +156,7 @@ public/
   images/             photos, posters, favicon, and social image
   videos/             local MP4 memories
 lib/
-  access.ts           server-side PIN and cookie helpers
+  access.ts           server-side PIN helper
 ```
 
 ## Accessibility and motion

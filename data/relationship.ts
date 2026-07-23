@@ -102,34 +102,28 @@ export const anniversaryContent = {
   ] satisfies GalleryPhoto[],
   videos: [
     {
-      src: "/videos/memory-01.mp4", // CHANGE: first part of your first memory
+      src: "/videos/memory-01.mp4", // CHANGE: first complete video
       poster: "/images/video-poster-01.webp",
-      caption: "A moment worth keeping · Part I",
-      description: "The beginning of a favourite memory from our first year.",
+      caption: "A moment worth keeping",
+      description: "One complete favourite memory from our beautiful first year.",
     },
     {
-      src: "/videos/memory-01-part-2.mp4",
-      poster: "/images/video-poster-01.webp",
-      caption: "A moment worth keeping · Part II",
-      description: "The memory continues—because every second of it belongs here.",
-    },
-    {
-      src: "/videos/memory-01-part-3.mp4",
-      poster: "/images/video-poster-01.webp",
-      caption: "A moment worth keeping · Part III",
-      description: "Another little piece of us, saved exactly as it happened.",
-    },
-    {
-      src: "/videos/memory-01-part-4.mp4",
-      poster: "/images/video-poster-01.webp",
-      caption: "A moment worth keeping · Part IV",
-      description: "The final part of a memory I never want to forget.",
-    },
-    {
-      src: "/videos/memory-02.mp4", // CHANGE: your second MP4
+      src: "/videos/memory-02.mp4", // CHANGE: second complete video
       poster: "/images/video-poster-02.webp",
       caption: "Us, in motion",
       description: "Because some memories deserve to be felt all over again.",
+    },
+    {
+      src: "/videos/memory-03.mp4", // CHANGE: third complete video
+      poster: "/images/video-poster-03.webp",
+      caption: "The sweetest little moment",
+      description: "A short memory, but one that will always make me smile.",
+    },
+    {
+      src: "/videos/memory-04.mp4", // CHANGE: fourth complete video
+      poster: "/images/video-poster-04.webp",
+      caption: "Another piece of our story",
+      description: "One more beautiful second of Atanda and Ajoke, kept with love.",
     },
   ] satisfies VideoMemory[],
   reasons: [

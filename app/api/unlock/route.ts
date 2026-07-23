@@ -1,10 +1,5 @@
 import { NextResponse } from "next/server";
-import {
-  ACCESS_COOKIE_NAME,
-  createAccessToken,
-  isAccessConfigured,
-  verifyPin,
-} from "../../../lib/access";
+import { isAccessConfigured, verifyPin } from "../../../lib/access";
 
 export const runtime = "nodejs";
 
@@ -35,20 +30,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const response = NextResponse.json(
+  return NextResponse.json(
     { ok: true },
     { headers: { "Cache-Control": "no-store" } },
   );
-
-  response.cookies.set({
-    name: ACCESS_COOKIE_NAME,
-    value: createAccessToken(),
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 30,
-  });
-
-  return response;
 }

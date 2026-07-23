@@ -1,11 +1,14 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
+import type { AnniversaryContent } from "../data/relationship";
+import { AnniversarySite } from "./AnniversarySite";
 
-export function PinGate() {
+export function PinGate({ content }: { content: AnniversaryContent }) {
   const [pin, setPin] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -31,12 +34,17 @@ export function PinGate() {
         return;
       }
 
-      window.location.reload();
+      setPin("");
+      setIsUnlocked(true);
     } catch {
       setMessage("I could not open our story just yet. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
+  }
+
+  if (isUnlocked) {
+    return <AnniversarySite content={content} />;
   }
 
   return (

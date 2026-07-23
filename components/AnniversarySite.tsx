@@ -90,9 +90,13 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
   const [reasonIndex, setReasonIndex] = useState(0);
   const [lightboxPhoto, setLightboxPhoto] = useState<GalleryPhoto | null>(null);
   const [surpriseOpen, setSurpriseOpen] = useState(false);
+  const [loveTransitionVisible, setLoveTransitionVisible] = useState(false);
+  const [loveTransitionKey, setLoveTransitionKey] = useState(0);
   const pageRef = useRef<HTMLElement>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const firstRenderRef = useRef(true);
+  const transitioningRef = useRef(false);
+  const transitionTimersRef = useRef<number[]>([]);
   const lastPage = chapters.length - 1;
 
   const goToPage = useCallback((target: number) => {
@@ -101,6 +105,29 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
     setLightboxPhoto(null);
     if (nextPage === 0) setSurpriseOpen(false);
   }, [lastPage]);
+
+  const showLoveTransition = useCallback((target: number) => {
+    if (transitioningRef.current) return;
+
+    const nextPage = Math.max(0, Math.min(lastPage, target));
+    transitioningRef.current = true;
+    setLoveTransitionKey((key) => key + 1);
+    setLoveTransitionVisible(true);
+
+    const pageTimer = window.setTimeout(() => goToPage(nextPage), 480);
+    const finishTimer = window.setTimeout(() => {
+      setLoveTransitionVisible(false);
+      transitioningRef.current = false;
+    }, 1450);
+
+    transitionTimersRef.current = [pageTimer, finishTimer];
+  }, [goToPage, lastPage]);
+
+  useEffect(() => {
+    return () => {
+      transitionTimersRef.current.forEach((timer) => window.clearTimeout(timer));
+    };
+  }, []);
 
   useEffect(() => {
     if (firstRenderRef.current) {
@@ -122,7 +149,7 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
 
       if (event.key === "ArrowRight" || event.key === "PageDown") {
         event.preventDefault();
-        goToPage(page + 1);
+        showLoveTransition(page === lastPage ? 0 : page + 1);
       } else if (event.key === "ArrowLeft" || event.key === "PageUp") {
         event.preventDefault();
         goToPage(page - 1);
@@ -137,7 +164,7 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [goToPage, lastPage, lightboxPhoto, page]);
+  }, [goToPage, lastPage, lightboxPhoto, page, showLoveTransition]);
 
   const handleTouchStart = (event: React.TouchEvent) => {
     const touch = event.changedTouches[0];
@@ -153,7 +180,11 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
     const deltaX = touch.clientX - start.x;
     const deltaY = touch.clientY - start.y;
     if (Math.abs(deltaX) < 70 || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) return;
-    goToPage(deltaX < 0 ? page + 1 : page - 1);
+    if (deltaX < 0) {
+      showLoveTransition(page === lastPage ? 0 : page + 1);
+    } else {
+      goToPage(page - 1);
+    }
   };
 
   const timelineEvent = content.timeline[timelineIndex];
@@ -172,7 +203,7 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
               type="button"
               key={chapter.id}
               className={index === page ? "is-current" : index < page ? "is-visited" : ""}
-              onClick={() => goToPage(index)}
+              onClick={() => index > page ? showLoveTransition(index) : goToPage(index)}
               aria-label={`Open ${chapter.label}`}
               aria-current={index === page ? "step" : undefined}
             >
@@ -197,7 +228,7 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
                 <h1 id="hero-title" tabIndex={-1}>{content.hero.title}</h1>
                 <p className="hero-subtitle">{content.hero.subtitle}</p>
                 <div className="hero-actions">
-                  <button className="primary-button" type="button" onClick={() => goToPage(1)}>
+                  <button className="primary-button" type="button" onClick={() => showLoveTransition(1)}>
                     Relive Our Story <span aria-hidden="true">→</span>
                   </button>
                   <span className="handwritten">only the beginning</span>
@@ -356,10 +387,22 @@ export function AnniversarySite({ content }: { content: AnniversaryContent }) {
           <span aria-hidden="true">←</span> Back
         </button>
         <p><span>{chapters[page].label}</span><small>Swipe or use the arrows</small></p>
-        <button type="button" className="next-button" onClick={() => goToPage(page === lastPage ? 0 : page + 1)}>
+        <button type="button" className="next-button" onClick={() => showLoveTransition(page === lastPage ? 0 : page + 1)}>
           {page === lastPage ? "Begin again" : "Next"} <span aria-hidden="true">→</span>
         </button>
       </nav>
+
+      {loveTransitionVisible ? (
+        <div className="kiss-transition" aria-hidden="true" key={loveTransitionKey}>
+          <div className="kiss-transition-hearts">
+            {Array.from({ length: 10 }).map((_, index) => <span key={index}>♥</span>)}
+          </div>
+          <figure className="kiss-transition-card">
+            <img src="/images/muslim-couple-kiss.webp" alt="" />
+            <figcaption>love follows us to the next page</figcaption>
+          </figure>
+        </div>
+      ) : null}
 
       {lightboxPhoto ? <Lightbox photo={lightboxPhoto} onClose={() => setLightboxPhoto(null)} /> : null}
     </main>
